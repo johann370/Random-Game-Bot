@@ -32,9 +32,9 @@ async def add_game(ctx, game: str):
     with open('games.txt', 'r+') as file:
         if(game) not in file:
             file.write(f"\n{game}")
-            await ctx.send(f"{game} was added to the list")
+            await ctx.send(f"{game} was added to the list", delete_after=5)
         else:
-            await ctx.send(f"{game} is already in the list")
+            await ctx.send(f"{game} is already in the list", delete_after=5)
 
 
 @bot.command(name='games')
@@ -48,6 +48,6 @@ async def get_games(ctx):
     for game in games:
         message += f"{game}\n"
 
-    await ctx.send(message)
+    await ctx.send(message, delete_after=60)
 
 bot.run(TOKEN)
